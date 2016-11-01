@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crawler</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style/theme.css">
+</head>
+<body>
+
+	<div id="warmup" style="text-align: center">
+		<div class="col-sx-12" style="text-align: center">
+			<svg width="500" height="500" id=startbtn>
+				<filter id="dropshadow" height="130%">
+					<feGaussianBlur in="SourceAlpha" stdDeviation="3"/> <!-- stdDeviation is how much to blur -->
+					<feOffset dx="2" dy="2" result="offsetblur"/> <!-- how much to offset -->
+					<feMerge> 
+						<feMergeNode/> <!-- this contains the offset blurred image -->
+						<feMergeNode in="SourceGraphic"/> <!-- this contains the element that the filter is applied to -->
+					</feMerge>
+				</filter>
+				<circle class="shadow" cx="250" cy="250" r="200" fill="rgba(0, 0, 0, .2)" stroke="#08BCD0" stroke-width="4" style="filter:url(#dropshadow)"/>
+				<path class="shadow" d="M200 150 L200 350 L 350 250 Z" fill="#08BCD0" />
+			</svg>
+
+			<div id="starttext">Initializing</div>
+			<div id="chartContainer"></div>
+		</div>
+
+		<div class="col-xs-12 col-sm-12 col-md-12 com-lg-12 bg-dark">
+			<div class="col-xs-3">
+				<span>Crawled</span>
+				<h2 id="crawled">10000</h2>
+			</div>
+			<div class="col-xs-3">
+				<span>To Crawl</span>
+				<h2 id="tocrawl">10000</h2>
+			</div>
+			<div class="col-xs-3">
+				<span>Keywords</span>
+				<h2 id="keywords">10000</h2>
+			</div>
+			<div class="col-xs-3">
+				<span>Images</span>
+				<h2 id="images">10000</h2>
+			</div>
+		</div>
+	</div>
+
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="script/canvasjs.min.js"></script>
+	<script type="text/javascript" src="script/charts.js"></script>
+	<script type="text/javascript" src="script/status.js"></script>
+
+	<script type="text/javascript">
+		var chart = null, s = null;
+		$(function() {
+			setTimeout(function() {
+				$("#starttext").addClass("done");
+				$("#startbtn").addClass("begin");
+
+				$("#startbtn").click(function() {
+					$("#startbtn").removeClass("begin");
+					$("#chartContainer").addClass("begin");
+
+					if(chart == null)
+						chart = new makeChart;
+					if(s == null) {
+						s = new getStatus;
+						s.start();
+					}
+					
+
+				});
+			}, 2000);
+		});
+	</script>
+</body>
+</html>

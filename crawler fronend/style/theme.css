@@ -1,0 +1,125 @@
+@font-face {
+	font-family: RobotoThin;
+	src: url(../fonts/Roboto-Light.ttf);
+}
+
+@font-face {
+	font-family: RobotoBold;
+	src: url(../fonts/Roboto-Bold.ttf);
+}
+
+@font-face {
+	font-family: Roboto;
+	src: url(../fonts/Roboto-Medium.ttf);
+}
+
+body, html {
+	margin: 0;
+	background: #111;
+	font-family: "Roboto";
+	overflow: hidden;
+}
+
+#warmup {
+	background: #222;
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+}
+
+.bg-dark {
+	background: #111;
+	color: #AAA;
+	box-sizing: border-box;
+	padding: 20px;
+	text-align: center;
+	position: fixed;
+	bottom: 0;
+	height: 150px;
+}
+
+.bg-dark > div {
+	box-sizing: border-box;
+	padding: 20px 0px 0px 80px;
+	text-align: left;
+}
+
+.bg-dark span {
+	display: block;
+	font-size: 12px;
+	opacity: 0.7;
+}
+
+.bg-dark h2 {
+	font-size: 64px;
+	padding: 0;
+	margin: 0;
+	font-family: RobotoBold;
+}
+
+.shadow {
+	-webkit-filter: drop-shadow( -5px -5px 5px #000 );
+	filter: drop-shadow( -5px -5px 5px #000 ); /* Same syntax as box-shadow */
+	cursor: pointer;
+	opacity: 0.8;
+	transition: all 200ms linear;
+}
+
+.shadow:hover {
+	opacity: 1;
+}
+
+#startbtn {
+	display: none;
+	opacity: 0;
+	position: absolute;
+	top: calc(50% - 350px);
+	left: calc(50% - 250px);
+}
+
+#startbtn.begin {
+	display: block;
+	animation: show 2s linear forwards 1;
+}
+
+@keyframes show {
+	100% { opacity: 1; }
+}
+
+#starttext {
+	font-size: 3em;
+	font-weight: 100;
+	font-family: "RobotoThin";
+	letter-spacing: 20px;
+	color: #FFF;
+	position: absolute;
+	top: calc(50% - 100px);
+	left: calc(50% - 6em);
+	text-transform: uppercase;
+	animation: blinker 1s ease alternate infinite;
+}
+
+@keyframes blinker {  
+	100% { opacity: 0.0; }
+}
+
+#starttext.done {
+	display: none;
+}
+
+#chartContainer {
+	display: none;
+	opacity: 0;
+	background: transparent;
+	color: #FFF;
+
+	position: absolute;
+    height: 70vh;
+    top: 5vh;	
+    width: 100vw;
+}
+
+#chartContainer.begin {
+	display: block;
+	animation: show 2s linear forwards 1;
+}
